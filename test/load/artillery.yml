@@ -1,0 +1,16 @@
+config:
+  target: "http://127.0.0.1:5000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 15
+scenarios:
+  - flow:
+      - loop:
+          - get:
+              url: "/recomendations/content-based/1?amount=5"
+          - get:
+              url: "/recommendations/user-based/1?amount=5"
+          - get:
+              url: "/recomendations/hybrid-based/1/2?amount=5"
+        count: 5 
