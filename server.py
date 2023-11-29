@@ -14,9 +14,9 @@ load_dotenv()
 import pandas as pd
 #Modules start
 content_recommender = ContentRecommender()
-content_recommender.load_data("../data/data.csv")
-collaborative_recommender = CollaborativeFilteringRecommender('../data/interactions.csv', 103)
-df = pd.read_csv("../data/data.csv", sep="|")
+content_recommender.load_data("data/data.csv")
+collaborative_recommender = CollaborativeFilteringRecommender('data/interactions.csv', 103)
+df = pd.read_csv("data/data.csv", sep="|")
 
 collaborative_recommender.train_model()
 hybrid_recommender = HybridRecommender(content_recommender, collaborative_recommender)

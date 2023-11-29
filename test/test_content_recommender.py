@@ -5,6 +5,7 @@ lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(lib_path)
 from lib.ContentRecommender import ContentRecommender
 from lib.Exceptions.ContentNotFoundException import ContentNotFoundException
+from lib.CollaborativeFilteringRecommender import CollaborativeFilteringRecommender
 
 @pytest.fixture
 def content_recommender():

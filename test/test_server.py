@@ -12,7 +12,6 @@ def client():
     with app.test_client() as client:
         yield client
 
-
 def test_content_based_endpoint_returns_ok_status(client):
     response = client.get('/recomendations/content-based/1?amount=5')
     assert response.status_code == 200

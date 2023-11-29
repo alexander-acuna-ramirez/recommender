@@ -13,25 +13,25 @@ def collaborative_recommender():
     collaborative_recommender.train_model()
     return collaborative_recommender
 
-def test_recommendation_length(collaborative_recommender):
+def test_recommendation_are_not_empty(collaborative_recommender):
     user_id = 1
     num_recommendations = 5
     recommendations = collaborative_recommender.recommend_for_user(user_id, num_recommendations)
     assert len(recommendations) == num_recommendations
 
-def test_recommendation_scores(collaborative_recommender):
+def test_recommendation_has_scores(collaborative_recommender):
     user_id = 1
     num_recommendations = 5
     recommendations = collaborative_recommender.recommend_for_user(user_id, num_recommendations)
     for _, score in recommendations:
         assert 1 <= score <= 4
 
-def test_evaluate_model(collaborative_recommender):
+def test_model_can_return_accuracy_metrics(collaborative_recommender):
     rmse, mae = collaborative_recommender.evaluate_model()
     assert isinstance(rmse, float)
     assert isinstance(mae, float)
 
-def test_load_data():
+def test_load_data_generates_trainset():
     recommender = CollaborativeFilteringRecommender("../data/interactions.csv", 103)
     trainset = recommender.load_data()
     assert len(trainset.all_users()) > 0
